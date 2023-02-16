@@ -9,6 +9,7 @@ const contactRoute = require("./routes/contactRoute");
 const errorHandler = require('./middleware/errorMiddleware');
 const cookieParser = require('cookie-parser');
 const path = require('path');
+const { createPermission } = require("./controllers/permissionController");
 const app = express();
 
 //Middleware
@@ -35,6 +36,7 @@ mongoose
     .connect(process.env.MONGO_URI)
     .then(() => {
         app.listen(PORT, () => {
+            createPermission();
             console.log(`SERVER RUNNING ON PORT ${PORT}`);
         });
     })
