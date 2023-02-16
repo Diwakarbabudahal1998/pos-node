@@ -1,22 +1,16 @@
 const asyncHandler = require("express-async-handler");
 const Permission = require("../models/permissionModel");
 const data = require('../utils/permission')
-console.log(data)
 const createPermission = asyncHandler(async (req, res) => {
-    data.forEach(element => {
-        console.log(element)
-        let newData = Permission.findOneAndUpdate({ name: element.name }, {
-            $set: {
-                name: element.name
-            }
-        }, {
-            upsert: true,
-        });
-        // console.log(newData)
-        // Permission.create({
-        //     name: element.name
-        // })
-    });
+    await Permission.deleteMany();
+    data.map((index, element) => {
+        let newDate = Permission.findOneAndUpdate(
+            { name: index.name },
+            { $set: index },
+            { upsert: true })
+            .then()
+            .catch()
+    })
 
 });
 module.exports = {
