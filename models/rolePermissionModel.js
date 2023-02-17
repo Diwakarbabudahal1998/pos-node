@@ -7,12 +7,14 @@ const rolePermissionSchema = mongoose.Schema({
         trim: true,
         unique: true,
 
-    }, permission_name: {
+    },
+
+    permission_name: [{
         type: String,
         required: [true, "Please Name"],
         trim: true,
-        unique: true,
-    }
+
+    }]
 },
     {
         timestamps: true

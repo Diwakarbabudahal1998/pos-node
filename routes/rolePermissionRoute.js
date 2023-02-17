@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const { getPermissions, createRolePermission } = require("../controllers/rolePermissionController");
-router.get("/get-permissions", getPermissions);
-router.post("/create", createRolePermission);
+const protect = require("../middleware/authMiddleware");
+router.get("/get-permissions", protect, getPermissions);
+router.post("/create", protect, createRolePermission);
 
 module.exports = router;
