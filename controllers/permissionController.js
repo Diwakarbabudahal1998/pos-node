@@ -3,13 +3,15 @@ const Permission = require("../models/permissionModel");
 const data = require('../utils/permission')
 const createPermission = asyncHandler(async (req, res) => {
     await Permission.deleteMany();
-    let newData = data.forEach((item, index) => {
-        Permission.findOneAndUpdate({ name: item.name }, { $set: item }, { upsert: true })
+    data.map((index, element) => {
+        let newDate = Permission.findOneAndUpdate(
+            { name: index.name },
+            { $set: index },
+            { upsert: true })
             .then()
-            .catch((err) => {
-                console.log(err)
-            })
-    });
+            .catch()
+    })
+
 });
 module.exports = {
     createPermission
