@@ -1,10 +1,13 @@
 const permissions = [
     {
-        name: "View Dashboard"
+        name: "View HOME Page",
     },
     {
-        name: "Add Users"
-    }
+        name: "Add User"
+    },
+    {
+        name: "Edit Users"
+    },
 ];
 
 module.exports = permissions;
